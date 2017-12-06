@@ -1,4 +1,4 @@
-# A Mock up report
+# Embedded Sys Proj.
 
 ## Names 
 Karina Gonzalez, Austin Storm    
