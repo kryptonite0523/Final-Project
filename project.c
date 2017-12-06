@@ -77,11 +77,32 @@ unsigned long Period;
    
  while (1)
  {
-		
+	 //Set
+	 //PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,duty);
+	 //PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,duty );
 
 	 
-	 //Set
-	 PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,duty);
-	 //PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,duty );
-	 //PWM
+	 
+	 //Now that the PWM has been written beautifully we must set up interrupts to drive our matrix
+		
+	 //We need one PWM that runs an interrupt for our clock which tells the board when new data is arriving.
+		
+	 //We need another PWM that runs an interrupt for our latch signal which turns on to tell the board that it has reached the end of the row.
+		
+	 //Lastly we need another PWM that runs an interrupt for our output enable which turns off the LEDs while in transition from row to row. 
+		
+	 //Now that we have these interrupts set to call what we need next is to give them something to call. 
+		
+	 //For the Clock Interrupt the interrupt needs to seam with the data stream to let the board see the individual chunks of data also provide a 
+	 //count that the latch can access to determine when it needs to interrupt. 
+		
+	 //For the Latch Interrupt the interrupt needs to be set to enable when the Clock Interrupt has been enabled 31 times. Then shifting the ABCD Row 
+	 //So the next batch of data ends up in a different part of the matrix. 
+	 
+	 //For the Output Enable Interrupt the interrupt must occur simultaneously with the latch to turn off the old LED's while in transition. 
+	 
+	 //Lastly we need to set up data in a named fashion to allow a elementary coding pupil the ability to choose the color display on the matrix. 
+	 //Preferably using the Terminal Switch to employ different color choices.
+	 
+	 
 }}
