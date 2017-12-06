@@ -24,10 +24,15 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #include "driverlib/pwm.h"
 
 
+void delay(int delayy) {
+    SysCtlDelay((SysCtlClockGet()/(3000))*delayy ) ; 
+}
 int main(void)
 {    
 	
 unsigned long Period;
+	
+	uint32_t duty = 250; 
 	
 
     //Set system clock
@@ -39,7 +44,7 @@ unsigned long Period;
    // Enable the peripherals 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1); 
-    Period = SysCtlClockGet() / 200;             //PWM frequency 200Hz
+    Period = SysCtlClockGet() / 50;             //PWM frequency 50Hz
 
     //Configure PF1,PF2,PF3 Pins as PWM
     GPIOPinConfigure(GPIO_PF1_M1PWM5);
@@ -72,5 +77,11 @@ unsigned long Period;
    
  while (1)
  {
+		
 
+	 
+	 //Set
+	 PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,duty);
+	 //PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,duty );
+	 //PWM
 }}
